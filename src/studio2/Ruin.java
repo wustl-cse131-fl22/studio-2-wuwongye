@@ -23,19 +23,15 @@ public class Ruin {
 		int i = 0;
 		String status;
 		int playTimes = 0;
-		while (i < totalSimulations) 
-		{
+		while (i < totalSimulations) {
 			playTimes = 0;
 			startAmount = money;
-			while (startAmount > 0 && startAmount < winLimit)
-			{
-				if (winChance > Math.random())
-				{
+			while (startAmount > 0 && startAmount < winLimit){
+				if (winChance > Math.random()){
 					startAmount++;
 					playTimes++;
 				}
-				else 
-				{
+				else {
 					startAmount--;
 					playTimes++;
 				}
@@ -49,15 +45,13 @@ public class Ruin {
 				lossCount++;
 			}
 			System.out.println("Simulation " + i + ": " + playTimes + " " + status);
-
 		}
 		System.out.println("Losses: "+lossCount+" Simulation: "+totalSimulations);
 		double a = (1-winChance)/winChance;
-		double expectedRuin = (Math.pow(a, money) - Math.pow(a,  winLimit))/(1-Math.pow(a,winLimit));
-		System.out.println("Ruin Rate from Simulation: " + (Math.round((double)lossCount/totalSimulations * 100)/100.00) + " Expected Ruin Rate: " + expectedRuin);
-
-
+		double expectedRuin = (Math.pow(a, money) - 
+				Math.pow(a,  winLimit))/(1-Math.pow(a,winLimit));
+		System.out.println("Ruin Rate from Simulation: " + 
+				(Math.round((double)lossCount/totalSimulations * 100)/100.00) +
+				" Expected Ruin Rate: " + expectedRuin);
 	}
-
-
 }
